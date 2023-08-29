@@ -99,8 +99,24 @@ const updateSingleItemDetails = async (req, res) => {
   }
 };
 
+// get all items
+const getAllItems = async (req, res) => {
+  try {
+    const allItemsData = await itemsModel.find({});
+
+    return res
+      .status(200)
+      .json(
+        new ApiResponse(200, allItemsData, "All Items fetched successfully")
+      );
+  } catch (error) {
+    return res.status(500).json(new ApiError(500, "Internal Server Error"));
+  }
+};
+
 module.exports = {
   createItem,
   getSingleItemDetails,
   updateSingleItemDetails,
+  getAllItems,
 };

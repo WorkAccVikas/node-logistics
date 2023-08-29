@@ -125,8 +125,27 @@ const updateSingleDetails = async function (req, res) {
   }
 };
 
+const getAllDeliveryVehicles = async (req, res) => {
+  try {
+    const allDeliveryVehicles = await deliveryVehiclesModel.find({});
+
+    return res
+      .status(200)
+      .json(
+        new ApiResponse(
+          200,
+          allDeliveryVehicles,
+          "All Items fetched successfully"
+        )
+      );
+  } catch (error) {
+    return res.status(500).json(new ApiError(500, "Internal Server Error"));
+  }
+};
+
 module.exports = {
   create,
   getSingleDetails,
   updateSingleDetails,
+  getAllDeliveryVehicles,
 };

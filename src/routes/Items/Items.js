@@ -25,4 +25,9 @@ router.get("/:itemId", itemsController.getSingleItemDetails);
  */
 router.put("/:itemId", itemsController.updateSingleItemDetails);
 
+/** GET : http://localhost:8000/api/v1/items
+ * @header : authorization : JWT TOKEN (from /signin) (mandatory)
+ */
+router.get("/", itemsController.getAllItems);
+
 module.exports = router;
